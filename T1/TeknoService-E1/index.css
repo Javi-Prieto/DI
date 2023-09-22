@@ -3,3 +3,6 @@ body{
     color: #0029BA;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+form > div > div > p {
+    text-shadow: 1px 1px 3px black !important;
+}
