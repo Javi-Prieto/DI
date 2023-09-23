@@ -6,3 +6,11 @@ body{
 form > div > div > p {
     text-shadow: 1px 1px 3px black !important;
 }
+footer{
+    height: 50px !important;
+    bottom: 0 !important;
+}
+#addBtn{
+    background-color: #E1E1E1;
+    height: 5% !important;
+}
