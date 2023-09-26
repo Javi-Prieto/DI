@@ -1,0 +1,16 @@
+#starWTxt{
+    font-family: 'Poller One', cursive !important;
+}
+/*main>div>div>div{
+    background-color: rgba(0, 0, 0, 0.363);
+    visibility: hidden;
+}*/
+div.card>div{
+    
+    visibility: hidden !important;
+    color: white;
+}
+div.card:hover>div{
+    visibility: visible!important;
+    background-color: rgba(0, 0, 0, 0.459)!important;
+}
