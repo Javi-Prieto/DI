@@ -1,10 +1,12 @@
 #starWTxt{
     font-family: 'Poller One', cursive !important;
+    font-size: xx-large;
+    color: yellow;
 }
-/*main>div>div>div{
-    background-color: rgba(0, 0, 0, 0.363);
-    visibility: hidden;
-}*/
+nav{
+    font-size: xx-large;
+}
+
 div.card>div{
     
     visibility: hidden !important;
