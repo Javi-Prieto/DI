@@ -16,3 +16,6 @@ div.card:hover>div{
     visibility: visible!important;
     background-color: rgba(0, 0, 0, 0.459)!important;
 }
+#myModal{
+    background-color: rgba(0, 0, 0, 0.541);
+}

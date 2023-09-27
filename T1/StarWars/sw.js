@@ -14,7 +14,7 @@ $(document).ready(function () {
                         <h4 class="card-title">${listadoPers[i].name}</h4>
                         <p class="card-text">Height: ${listadoPers[i].height}</p>
                         <p class="card-text">Birth Year: ${listadoPers[i].birth_year}</p>
-                        <button class="btn btnStw btn-primary" persId="${i}">See More</button>
+                        <button class="btn btnStw btn-primary" persId="${i+1}">See More</button>
                     </div>
                 </div>
             </div>`;
@@ -24,40 +24,51 @@ $(document).ready(function () {
     });
 
     $(document).on('click', '.btnStw', function () {
-        var persId = $(this).attr('persId')
         
-        $.ajax({
+      var persId = 0;
+      persId = $(this).attr('persId');
+        
+       $.ajax({
             type: "GET",
             url: "https://swapi.dev/api/people/" + persId
-        }).done(function (pers){
-            var personaje = pers;
-            $('#main').append(`<div class="modal" id="myModal">
-            <div class="modal-dialog">
-              <div class="modal-content">
-          
-                <!-- Modal Header -->
-                <div class="modal-header">
-                  <h4 class="modal-title">Modal Heading</h4>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
-          
-                <!-- Modal body -->
-                <div class="modal-body">
-                  <p>${pers.name}</p>
-                </div>
-          
-                <!-- Modal footer -->
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-danger" id="closeModal">Close</button>
-                </div>
-          
+       }).done(function (pers){
+          console.log(pers);
+          var modal = `
+            <div class="modal closeModal" id="myModal">
+              <div class="modal-dialog">
+                <div class="modal-content">
+            
+                  <!-- Modal Header -->
+                  <div class="modal-header">
+                    <h4 class="modal-title">${pers.name}</h4>
+                    <button type="button" class="btn-close closeModal" ></button>
+                  </div>
+            
+                  <!-- Modal body -->
+                  <div class="modal-body">
+                    <p>Mass: ${pers.mass}kg</p>
+                    <p>Hair Color: ${checkNull(pers.hair_color)}</p>
+                    <p>Skin Color: ${pers.skin_color}</p>
+                    <p>Eye Color: ${pers.eye_color}</p>
+                    <p>Gender: ${checkNull(pers.gender) }</p>
+                    <p>Number of Films: ${pers.films.length}</p>
+                    <p>Number of StarShips: ${pers.starships.length}</p>
+                    <p>Number of Vehicles: ${pers.vehicles.length}</p>
+                  </div>
+            
               </div>
             </div>
-          </div>`);
+          </div>
+          `;
+          $('#body').append(modal);
           $('#myModal').show();
         })
     });
-    $(document).on('click', '#closeModal', function(){
-        $('#myModal').hide()
+    $(document).on('click', '.closeModal', function(){
+        $('#myModal').remove();
     });
-});
+    function checkNull(toCheck){
+      if(toCheck == "n/a") return "Nothing" ;
+      return toCheck;
+    }
+  });
