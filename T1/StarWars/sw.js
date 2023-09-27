@@ -60,7 +60,7 @@ $(document).ready(function () {
             </div>
           </div>
           `;
-          $('#body').append(modal);
+          $('body').append(modal);
           $('#myModal').show();
         })
     });
