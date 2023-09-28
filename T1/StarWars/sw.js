@@ -33,39 +33,20 @@ $(document).ready(function () {
             url: "https://swapi.dev/api/people/" + persId
        }).done(function (pers){
           console.log(pers);
-          var modal = `
-            <div class="modal closeModal" id="myModal">
-              <div class="modal-dialog">
-                <div class="modal-content">
-            
-                  <!-- Modal Header -->
-                  <div class="modal-header">
-                    <h4 class="modal-title">${pers.name}</h4>
-                    <button type="button" class="btn-close closeModal" ></button>
-                  </div>
-            
-                  <!-- Modal body -->
-                  <div class="modal-body">
-                    <p>Mass: ${pers.mass}kg</p>
-                    <p>Hair Color: ${checkNull(pers.hair_color)}</p>
-                    <p>Skin Color: ${pers.skin_color}</p>
-                    <p>Eye Color: ${pers.eye_color}</p>
-                    <p>Gender: ${checkNull(pers.gender) }</p>
-                    <p>Number of Films: ${pers.films.length}</p>
-                    <p>Number of StarShips: ${pers.starships.length}</p>
-                    <p>Number of Vehicles: ${pers.vehicles.length}</p>
-                  </div>
-            
-              </div>
-            </div>
-          </div>
-          `;
-          $('body').append(modal);
+          $('#persN').text(pers.name);
+          $('#persM').text(pers.mass);
+          $('#persHc').text(checkNull(pers.hair_color));
+          $('#persSc').text(pers.skin_color);
+          $('#persEc').text(checkNull(pers.eye_color));
+          $('#persG').text(pers.gender);
+          $('#persF').text(pers.films.length);
+          $('#persSs').text(pers.starships.length);
+          $('#persV').text(pers.vehicles.length);
           $('#myModal').show();
         })
     });
     $(document).on('click', '.closeModal', function(){
-        $('#myModal').remove();
+        $('#myModal').hide();
     });
     function checkNull(toCheck){
       if(toCheck == "n/a") return "Nothing" ;
